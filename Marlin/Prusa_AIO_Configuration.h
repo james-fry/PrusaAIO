@@ -26,7 +26,7 @@
 //===========================================================================
 
 // Set a custom printer name.
-#define PRUSA_AIO_PRINTER_NAME "AIO Bear"
+#define PRUSA_AIO_PRINTER_NAME "DragonBear"
 
 //===========================================================================
 //=========================== Printer/Frame Type ============================
@@ -67,9 +67,9 @@
  *    - Robin E3D 1.0  (STM32F103RCT6)
  *    - Robin E3D 1.1  (STM32F103RCT6)
  */
-#define PRUSA_AIO_MOTHERBOARD_BTT_SKR_V3_0_EZ
+//#define PRUSA_AIO_MOTHERBOARD_BTT_SKR_V3_0_EZ
 //#define PRUSA_AIO_MOTHERBOARD_BTT_SKR_V3_0
-//#define PRUSA_AIO_MOTHERBOARD_BTT_SKR_V2_0_REV_B
+#define PRUSA_AIO_MOTHERBOARD_BTT_SKR_V2_0_REV_B
 //#define PRUSA_AIO_MOTHERBOARD_BTT_SKR_1_4_TURBO
 //#define PRUSA_AIO_MOTHERBOARD_BTT_SKR_1_4
 //#define PRUSA_AIO_MOTHERBOARD_BTT_BTT002
@@ -196,6 +196,7 @@
  * under Configuration -> Advanced Settings -> Probe Offsets
  */
 //#define PRUSA_AIO_NOZZLE_TO_PROBE_OFFSET { 23, 5, 0 }
+#define PRUSA_SKR_NOZZLE_TO_PROBE_OFFSET { 23, 5, -0.95 }  // JF - Updated for SKR Titan Bear
 
 /**
  * Part Cooling Fan
@@ -212,8 +213,8 @@
  *   - 5V Stock Prusa 5015              https://www.prusa3d.com/product/print-fan-mk3-s-mini/
  *   - 5V LDO DF5015H05S                https://www.printedsolid.com/products/ldo-5015-5v-blower-fan-df5015h05s
  */
-#define PRUSA_AIO_PART_COOLING_FAN_GENERIC
-//#define PRUSA_AIO_PART_COOLING_FAN_24V_MECHATRONICS_B5015E24B_BSR
+//#define PRUSA_AIO_PART_COOLING_FAN_GENERIC
+#define PRUSA_AIO_PART_COOLING_FAN_24V_MECHATRONICS_B5015E24B_BSR
 //#define PRUSA_AIO_PART_COOLING_FAN_24V_DELTA_BFB0524HH
 //#define PRUSA_AIO_PART_COOLING_FAN_5V_STOCK_PRUSA_5015
 //#define PRUSA_AIO_PART_COOLING_FAN_5V_LDO_DF5015H05S
@@ -245,20 +246,35 @@
  *
  * If needed, uncomment PRUSA_AIO_CUSTOM_HOTEND_PID or PRUSA_AIO_CUSTOM_BED_PID to customize PID settings.
  */
-//#define PRUSA_AIO_CUSTOM_HOTEND_PID
+#define PRUSA_AIO_CUSTOM_HOTEND_PID
 #if ENABLED(PRUSA_AIO_CUSTOM_HOTEND_PID)
-  #define PRUSA_AIO_DEFAULT_Kp  16.50
-  #define PRUSA_AIO_DEFAULT_Ki   1.16
-  #define PRUSA_AIO_DEFAULT_Kd  58.80
+  //#define PRUSA_SKR_DEFAULT_Kp  16.50
+  //#define PRUSA_SKR_DEFAULT_Ki   1.16
+  //#define PRUSA_SKR_DEFAULT_Kd  58.80
+
+  #define PRUSA_AIO_DEFAULT_Kp 19.3532  // JF - added after PID tune for SKR titan bear (M303 E0 S220 C8)
+  #define PRUSA_AIO_DEFAULT_Ki 1.3679   // JF - added after PID tune for SKR titan bear (M303 E0 S220 C8)
+  #define PRUSA_AIO_DEFAULT_Kd 68.4548  // JF - added after PID tune for SKR titan bear (M303 E0 S220 C8)
   // Find your own by running "M303 E0 C8 S210" via serial to run autotune on the hotend at 210 °C for 8 cycles.
 #endif
 
-//#define PRUSA_AIO_CUSTOM_BED_PID
+#define PRUSA_AIO_CUSTOM_BED_PID
 #if ENABLED(PRUSA_AIO_CUSTOM_BED_PID)
-  #define PRUSA_AIO_DEFAULT_bedKp  28.13
-  #define PRUSA_AIO_DEFAULT_bedKi   2.09
-  #define PRUSA_AIO_DEFAULT_bedKd 483.07
-  // Find your own by running "M303 E-1 C8 S65" via serial to run autotune on the bed at 65 °C for 8 cycles.
+  //#define PRUSA_SKR_DEFAULT_bedKp  28.13
+  //#define PRUSA_SKR_DEFAULT_bedKi   2.09
+  //#define PRUSA_SKR_DEFAULT_bedKd 483.07
+
+// 65 degs PID
+  #define PRUSA_AIO_DEFAULT_bedKp 36.6011   // JF - added after PID tune for SKR titan bear (M303 E-1 C8 S65)
+  #define PRUSA_AIO_DEFAULT_bedKi 1.8301    // JF - added after PID tune for SKR titan bear (M303 E-1 C8 S65)
+  #define PRUSA_AIO_DEFAULT_bedKd 488.0143  // JF - added after PID tune for SKR titan bear (M303 E-1 C8 S65)
+
+// 90 degs PID
+//  #define DEFAULT_bedKp 27.5020   // JF - added after PID tune for SKR titan bear (M303 E-1 C8 S90)
+//  #define DEFAULT_bedKi 0.8899    // JF - added after PID tune for SKR titan bear (M303 E-1 C8 S90)
+//  #define DEFAULT_bedKd 566.6324  // JF - added after PID tune for SKR titan bear (M303 E-1 C8 S90)
+
+// Find your own by running "M303 E-1 C8 S65" via serial to run autotune on the bed at 65 °C for 8 cycles.
 #endif
 
 //===========================================================================
@@ -350,7 +366,7 @@
 // 17 NeoPixels fit in the top 2040 extrusion (60 LEDs/meter): https://www.amazon.com/gp/product/B07FVR6W71
 
 // NeoPixel strip is disabled by default. Uncomment to enable.
-//#define PRUSA_AIO_NEOPIXEL_STRIP
+#define PRUSA_AIO_NEOPIXEL_STRIP
 #if ENABLED(PRUSA_AIO_NEOPIXEL_STRIP)
   /**
    * NeoPixel Strip Type
@@ -359,8 +375,8 @@
    *   See https://github.com/adafruit/Adafruit_NeoPixel/blob/master/Adafruit_NeoPixel.h
    */
   #define PRUSA_AIO_NEOPIXEL_STRIP_TYPE NEO_GRB
-  #define PRUSA_AIO_NEOPIXEL_STRIP_LED_COUNT    17    // 17 NeoPixels fit in the top 2040 extrusion
-  #define PRUSA_AIO_NEOPIXEL_STRIP_BRIGHTNESS  255    // 255 is max brightness
+  #define PRUSA_AIO_NEOPIXEL_STRIP_LED_COUNT   46    // 17 NeoPixels fit in the top 2040 extrusion
+  #define PRUSA_AIO_NEOPIXEL_STRIP_BRIGHTNESS  200    // 255 is max brightness
 
   /**
    * Default NeoPixel Strip Color
