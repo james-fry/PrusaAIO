@@ -597,7 +597,7 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-//#define E0_AUTO_FAN_PIN -1
+#define E0_AUTO_FAN_PIN HEATER_1_PIN // JF - using Heater 1 pin so no need to change wiring from SKR1.4T
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
@@ -1638,8 +1638,8 @@
    *
    * :[ 'LCD', 'ONBOARD', 'CUSTOM_CABLE' ]
    */
-  #define SDCARD_CONNECTION LCD
-
+  //#define SDCARD_CONNECTION LCD
+  #define SDCARD_CONNECTION ONBOARD // JF - added this to allow fw update from octopi. Also change it in Prusa_AIO_Conditionals.h
   // Enable if SD detect is rendered useless (e.g., by using an SD extender)
   //#define NO_SD_DETECT
 

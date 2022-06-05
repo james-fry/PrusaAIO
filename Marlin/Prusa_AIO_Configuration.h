@@ -196,7 +196,7 @@
  * under Configuration -> Advanced Settings -> Probe Offsets
  */
 //#define PRUSA_AIO_NOZZLE_TO_PROBE_OFFSET { 23, 5, 0 }
-#define PRUSA_SKR_NOZZLE_TO_PROBE_OFFSET { 23, 5, -0.95 }  // JF - Updated for SKR Titan Bear
+#define PRUSA_AIO_NOZZLE_TO_PROBE_OFFSET { 23, 5, -0.95 }  // JF - Updated for SKR Titan Bear
 
 /**
  * Part Cooling Fan
