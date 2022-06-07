@@ -87,6 +87,13 @@ if pioutil.is_pio_build():
 			os.remove(warnfile)
 
 		#
+		# Give Prusa AIO warnings on every build
+		#
+		prusa_aio_warnfile = os.path.join(srcpath, "inc", "Prusa_AIO_Warnings.cpp.o")
+		if os.path.exists(prusa_aio_warnfile):
+			os.remove(prusa_aio_warnfile)
+
+		#
 		# Rebuild 'settings.cpp' for EEPROM_INIT_NOW
 		#
 		if 'EEPROM_INIT_NOW' in env['MARLIN_FEATURES']:
