@@ -121,8 +121,8 @@
  *   - LDO 0.9° pancake
  *   - LDO planetary
  */
-#define PRUSA_AIO_E_STEPPER_STOCK
-//#define PRUSA_AIO_E_STEPPER_BONDTECH_MOTECH
+//#define PRUSA_AIO_E_STEPPER_STOCK
+#define PRUSA_AIO_E_STEPPER_BONDTECH_MOTECH
 //#define PRUSA_AIO_E_STEPPER_LDO_0_9
 //#define PRUSA_AIO_E_STEPPER_LDO_PLANETARY
 
@@ -171,9 +171,9 @@
  *  - Bondtech BMG extruder w/ SuperPINDA or PINDA V2           https://www.bondtech.se/en/product/prusa-i3-mk3s-extruder-upgrade/
  *  - Bondtech BMG extruder w/ BLTouch mount by Vertigo 235     https://www.printables.com/model/6623
  */
-#define PRUSA_AIO_EXTRUDER_BEAR_PINDA
+//#define PRUSA_AIO_EXTRUDER_BEAR_PINDA
 //#define PRUSA_AIO_EXTRUDER_BEAR_BLTOUCH
-//#define PRUSA_AIO_EXTRUDER_BMG_PINDA
+#define PRUSA_AIO_EXTRUDER_BMG_PINDA
 //#define PRUSA_AIO_EXTRUDER_BMG_BLTOUCH
 
 /**
