@@ -183,8 +183,8 @@
  *   - PINDA V2 w/ Thermistor (4 wires)
  */
 #if EITHER(PRUSA_AIO_EXTRUDER_BEAR_PINDA, PRUSA_AIO_EXTRUDER_BMG_PINDA)
-  #define PRUSA_AIO_PROBE_SUPERPINDA
-  //#define PRUSA_AIO_PROBE_PINDA_V2
+  //#define PRUSA_AIO_PROBE_SUPERPINDA
+  #define PRUSA_AIO_PROBE_PINDA_V2  // JF - uncommented PINDA2
 #endif
 
 /*
